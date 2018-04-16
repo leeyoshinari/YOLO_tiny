@@ -5,7 +5,7 @@ This implementation of [YOLO](https://arxiv.org/pdf/1506.02640.pdf).
 ## Installation
 1. Clone YOLO_tiny repository
 	```Shell
-	$ git clone https://github.com/hizhangp/yolo_tensorflow.git
+	$ git clone https://github.com/leeyoshinari/YOLO_tiny.git
     $ cd YOLO_tiny
 	```
 
