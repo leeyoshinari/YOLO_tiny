@@ -81,13 +81,7 @@ class YOLO_tiny(object):
         return net
 
     def calc_iou(self, boxes1, boxes2, scope='iou'):
-        """calculate ious
-        Args:
-          boxes1: 4-D tensor [CELL_SIZE, CELL_SIZE, BOXES_PER_CELL, 4]  ====> (x_center, y_center, w, h)
-          boxes2: 1-D tensor [CELL_SIZE, CELL_SIZE, BOXES_PER_CELL, 4] ===> (x_center, y_center, w, h)
-        Return:
-          iou: 3-D tensor [CELL_SIZE, CELL_SIZE, BOXES_PER_CELL]
-        """
+        #calculate ious
         with tf.variable_scope(scope):
             boxes1 = tf.stack([boxes1[:, :, :, :, 0] - boxes1[:, :, :, :, 2] / 2.0,
                                boxes1[:, :, :, :, 1] - boxes1[:, :, :, :, 3] / 2.0,
