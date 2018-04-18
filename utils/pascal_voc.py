@@ -79,17 +79,6 @@ class pascal_voc(object):
 
     def prepare(self, model):
         gt_labels = self.load_labels(model)
-        '''if self.flipped:
-            gt_labels_cp = copy.deepcopy(gt_labels)
-            for idx in range(len(gt_labels_cp)):
-                gt_labels_cp[idx]['flipped'] = True
-                gt_labels_cp[idx]['label'] = gt_labels_cp[idx]['label'][:, ::-1, :]
-                print(gt_labels_cp[idx]['label'], '   ', gt_labels_cp[idx]['label'][:, ::-1, :])
-                for i in range(self.cell_size):
-                    for j in range(self.cell_size):
-                        if gt_labels_cp[idx]['label'][i, j, 0] == 1:
-                            gt_labels_cp[idx]['label'][i, j, 1] = self.image_size - 1 - gt_labels_cp[idx]['label'][i, j, 1]
-            gt_labels += gt_labels_cp'''
         np.random.shuffle(gt_labels)
         self.gt_labels = gt_labels
         return gt_labels
