@@ -2,7 +2,7 @@
 #
 #Created by lee
 #
-#2018-04-17
+#2018-04-18
 
 import tensorflow as tf
 import numpy as np
@@ -11,7 +11,7 @@ import cv2
 import argparse
 import colorsys
 import yolo.config as cfg
-from yolo.yolo_tiny_net import YOLO_tiny
+from yolo.yolo_net import YOLO_tiny
 
 class Detector(object):
     def __init__(self, net, weight_file):
@@ -166,7 +166,7 @@ class Detector(object):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', default="YOLO_tiny.ckpt-17200", type=str)#yolo_tiny.ckpt
+    parser.add_argument('--weights', default="YOLO_tiny.ckpt", type=str)#yolo_tiny.ckpt
     parser.add_argument('--weight_dir', default='output', type=str)
     parser.add_argument('--data_dir', default="data", type=str)
     parser.add_argument('--gpu', default= '', type=str)
@@ -184,7 +184,7 @@ def main():
     #detector.camera_detector(cap)
 
     # 检测图像文件
-    imname = './test/person.jpg' #文件路径
+    imname = './test/cat.jpg' #文件路径
     detector.image_detector(imname)
 
 
