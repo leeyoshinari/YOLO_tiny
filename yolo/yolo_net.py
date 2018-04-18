@@ -2,7 +2,7 @@
 #
 #Created by lee
 #
-#2018-04-17
+#2018-04-18
 
 import numpy as np
 import tensorflow as tf
@@ -50,7 +50,6 @@ class YOLO_tiny(object):
                             activation_fn=leaky_relu(self.alpha),
                             weights_initializer=tf.truncated_normal_initializer(0.0, 0.01),
                             weights_regularizer=slim.l2_regularizer(0.005)):
-            # normalizer_fn=slim.batch_norm):
             net = slim.conv2d(images, 16, 3, scope='conv1')
             net = slim.max_pool2d(net, 2)
 
