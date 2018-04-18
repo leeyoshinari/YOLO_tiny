@@ -1,6 +1,6 @@
 # YOLO_tiny
 
-This implementation of [YOLO](https://arxiv.org/pdf/1506.02640.pdf).
+This implementation of [YOLO](https://arxiv.org/pdf/1506.02640.pdf) with TensorFlow.
 
 ## Installation
 1. Clone YOLO_tiny repository
