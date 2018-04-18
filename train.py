@@ -2,7 +2,7 @@
 #
 #Created by lee
 #
-#2018-04-17
+#2018-04-18
 
 import tensorflow as tf
 import datetime
@@ -11,7 +11,7 @@ import os
 import argparse
 import yolo.config as cfg
 from six.moves import xrange
-from yolo.yolo_tiny_net import YOLO_tiny
+from yolo.yolo_net import YOLO_tiny
 from utils.pascal_voc import pascal_voc
 
 class Solver(object):
@@ -96,12 +96,17 @@ class Solver(object):
                         1. * sum_loss / group, self.remain(start_time, step))
                     print(log_str) #打印日志
 
+                    if loss < 1e4: #当训练发散时自动停止训练
+                        pass
+                    else:
+                        print('loss > 1e04')
+                        break
+
                 else:
                     summary_str, _ = self.sess.run([self.summary_op, self.train_op], feed_dict=feed_dict)
 
                 self.writer.add_summary(summary_str, step) #输出到tensorboard
-                if loss >= 1e4:
-                    break
+
             else:
                 self.sess.run(self.train_op, feed_dict=feed_dict)
 
@@ -129,7 +134,7 @@ class Solver(object):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', default="yolo_tiny.ckpt", type=str)
+    parser.add_argument('--weights', default="YOLO_tiny.ckpt", type=str)
     parser.add_argument('--gpu', default='', type=str) #指定使用GPU号
     args = parser.parse_args()
 
